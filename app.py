@@ -1,9 +1,14 @@
 import streamlit as st
 import pandas as pd
+from app_founded import run_founded
 
 from app_industry import run_industry
-from app_search import search_industry, search_jobtitle
+from app_rating import run_rating
+from app_salary import run_salary
+from app_search import search_sector
 from app_company_name import run_company_type, search_company
+from app_serach_job import search_jobtitle
+from app_search_industry import search_industry
 
 def main():
     # 가로로 길게 보이도록 어케함?
@@ -15,9 +20,6 @@ def main():
     
     choice = st.sidebar.radio(label= '분석 내용 선택',options = column_list)
     
-    
-
-
 
            
     if choice == column_list[0]:
@@ -27,14 +29,17 @@ def main():
         run_company_type()
         
     elif choice == column_list[1]:
-        run_industry()
+        run_salary()
    
     elif choice == column_list[2]:
-        pass
+        run_industry()
+
     elif choice == column_list[3]:
-        pass
+        run_rating()
+
     elif choice == column_list[4]:
-        pass
+        run_founded()
+
     elif choice == column_list[5]:
         pass
     elif choice == column_list[6]:
@@ -52,7 +57,7 @@ def main():
 
         name4 = st.text_input('섹터명 영문 기입',max_chars = 35)
         if len(name4)>0:
-            search_industry(name4)
+            search_sector(name4)
 
     # st.sidebar.snow()
 

@@ -9,6 +9,8 @@ def run_industry():
     st.text('')
 
     df = pd.read_csv('data/df_data_anaylist2.csv', index_col=0)
+    df = df.astype({'Founded':'int'})
+    df = df.astype({'Rating':'int'})
 
     chosen_menu = st.selectbox('dd',['산업별','섹터별'])
 
