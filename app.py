@@ -16,7 +16,7 @@ def main():
 
     # st.set_page_config(layout="wide")
     st.sidebar.header('데이터 애널리스트 모집공고 분석')
-    column_list = ['회사/회사유형별','연봉별','산업/섹터별','평가별','설립연도별','종합분석','검색']
+    column_list = ['회사/회사유형별','급여별','산업/섹터별','평가별','설립연도별','종합분석','검색']
     
     choice = st.sidebar.radio(label= '분석 내용 선택',options = column_list)
     
