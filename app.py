@@ -3,12 +3,30 @@ import pandas as pd
 from app_founded import run_founded
 
 from app_industry import run_industry
+from app_ml import run_ml
 from app_rating import run_rating
 from app_salary import run_salary
 from app_search import search_sector
 from app_company_name import run_company_type, search_company
 from app_serach_job import search_jobtitle
 from app_search_industry import search_industry
+
+import string
+import nltk
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+my_stopwords = stopwords.words('english')
+
+def message_cleaning(sentence) : 
+  #  1. 구두점 제거
+  Test_punc_removed = [char for char in sentence if char not in string.punctuation]
+  # 2. 각 글자들을 하나의 문자열로 합친다. 
+  Test_punc_removed_join = ''.join(Test_punc_removed)
+  # 3. 문자열에 불용어가 포함되어잇는지 확인해서, 불용어 제거한다.
+  Test_punc_removed_join_clean = [word for word in Test_punc_removed_join.split() if word.lower() not in my_stopwords]
+  # 4. 결과로 남은 단어들만 리턴한다. 
+  return Test_punc_removed_join_clean
+
 
 def main():
     # 가로로 길게 보이도록 어케함?
@@ -41,7 +59,8 @@ def main():
         run_founded()
 
     elif choice == column_list[5]:
-        pass
+        run_ml()
+
     elif choice == column_list[6]:
         name = st.text_input('Job Title 키워드 검색',max_chars = 35)
         if len(name)>0:
