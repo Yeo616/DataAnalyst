@@ -9,6 +9,8 @@ import plotly.graph_objects as go
 df = pd.read_csv('data/df_data_anaylist2.csv', index_col=0)
 df = df.astype({'Founded':'int'})
 df = df.astype({'Rating':'int'})
+df = df.astype({'Salary_Estimate_From_(K)':'int'})
+df = df.astype({'Salary_Estimate_To_(K)':'int'})
 
 # df = df[['Job Title', 'Job Description','Company Name','Rating','Location','Headquarters','Founded','Type of ownership','Industry','Sector','Revenue','Competitors', 'Easy Apply', 'Salary_Estimate_From_(K)','Salary_Estimate_To_(K)','Size_From(employees)','Size_To(employees)']]
 
@@ -17,10 +19,10 @@ def run_salary():
 
     df_from_max = df.loc[df['Salary_Estimate_From_(K)'] == df['Salary_Estimate_From_(K)'].max(),
         ['Salary_Estimate_From_(K)','Salary_Estimate_To_(K)','Job Title','Company Name','Rating','Founded','Type of ownership','Industry','Sector']]
-   
-    sorting = st.radio('정렬순 선택',['정렬 기준 없음','별점순 정렬','설립연도별 정렬'])
+  
+    sorting = st.radio('정렬순 급여정보 보기',['정렬 기준 없음','별점순 정렬','설립연도별 정렬'])
     if sorting == '정렬 기준 없음':
-        pass
+        sorting = 'Job Title'
     elif sorting == '별점순 정렬':
         sorting = 'Rating'
     elif sorting == '설립연도별 정렬':

@@ -12,7 +12,7 @@ def run_industry():
     df = df.astype({'Founded':'int'})
     df = df.astype({'Rating':'int'})
 
-    chosen_menu = st.selectbox('dd',['산업별','섹터별'])
+    chosen_menu = st.selectbox('산업/섹터',['산업별','섹터별'])
 
     if chosen_menu == '산업별':
 
